@@ -15,38 +15,33 @@ from prompt import SYSTEM_PROMPT
 load_dotenv()
 
 folder = os.path.dirname(__file__)
-default_csv = os.path.join(folder, "budget.csv")
+budget_file = None
 
 print("Welcome to your Budget Financial Planner!")
-print("I'll help you analyze spending from your budget CSV.")
+print("Select a CSV file to analyze spending, or cancel to continue without one.")
 print()
-print("Please select your budget CSV file...")
 
 root = tk.Tk()
 root.withdraw()
 chosen = filedialog.askopenfilename(
     title="Select budget CSV",
-    filetypes=[("CSV files", "*.csv"), ("All files", "*.*")],
+    filetypes=[("CSV files", "*.csv")],
     initialdir=folder,
-    initialfile="budget.csv",
 )
 root.destroy()
 
-if chosen:
+if chosen and os.path.isfile(chosen):
     budget_file = chosen
 else:
-    print("No file selected. Using default:", default_csv)
-    budget_file = default_csv
-
-print("Using budget file:", budget_file)
+    print("No CSV loaded")
 print()
 
 
 @tool
 def read_budget_csv():
     """Read the budget CSV file with expenses."""
-    if not os.path.isfile(budget_file):
-        return "Error: file not found"
+    if not budget_file or not os.path.isfile(budget_file):
+        return "No budget CSV is loaded."
     with open(budget_file) as f:
         return f.read()
 
@@ -65,12 +60,19 @@ def call_model(state):
 builder = StateGraph(MessagesState)
 builder.add_node("call_model", call_model)
 builder.add_node("tools", ToolNode(tools))
+
 builder.add_edge(START, "call_model")
 builder.add_conditional_edges("call_model", tools_condition)
 builder.add_edge("tools", "call_model")
 
 memory = InMemorySaver()
 graph = builder.compile(checkpointer=memory)
+
+graph_png = os.path.join(os.getcwd(), "graph.png")
+with open(graph_png, "wb") as f:
+    f.write(graph.get_graph(xray=True).draw_mermaid_png())
+print(f"Graph saved to {graph_png}")
+print()
 
 print("Budget Financial Planner")
 print("Type quit to exit")
