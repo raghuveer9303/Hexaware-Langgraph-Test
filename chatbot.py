@@ -46,7 +46,26 @@ def read_budget_csv():
         return f.read()
 
 
-tools = [read_budget_csv]
+_graph_ref: dict = {}
+
+
+@tool
+def save_architecture_graph():
+    """Save a PNG diagram of this agent's architecture (nodes, tools, and flow).
+
+    Use when the user asks to visualize the graph, see the architecture, workflow,
+    or how the agent or tools work.
+    """
+    compiled = _graph_ref.get("graph")
+    if compiled is None:
+        return "Graph is not available yet."
+    graph_png = os.path.join(os.getcwd(), "graph.png")
+    with open(graph_png, "wb") as f:
+        f.write(compiled.get_graph(xray=True).draw_mermaid_png())
+    return f"Graph saved to {graph_png}"
+
+
+tools = [read_budget_csv, save_architecture_graph]
 model = ChatMistralAI(model="mistral-small")
 model = model.bind_tools(tools)
 
@@ -67,12 +86,7 @@ builder.add_edge("tools", "call_model")
 
 memory = InMemorySaver()
 graph = builder.compile(checkpointer=memory)
-
-graph_png = os.path.join(os.getcwd(), "graph.png")
-with open(graph_png, "wb") as f:
-    f.write(graph.get_graph(xray=True).draw_mermaid_png())
-print(f"Graph saved to {graph_png}")
-print()
+_graph_ref["graph"] = graph
 
 print("Budget Financial Planner")
 print("Type quit to exit")
