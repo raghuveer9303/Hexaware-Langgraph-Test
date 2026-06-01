@@ -1,0 +1,235 @@
+date,category,description,amount
+2026-04-01,Transport,Toll road,17.42
+2026-04-02,Utilities,Electric bill,72.52
+2026-04-03,Dining,Date night dinner,60.51
+2026-04-04,Travel,Flight,400.14
+2026-04-05,Gifts,Wedding gift,114.63
+2026-04-06,Fees,Late payment fee,34.35
+2026-04-07,Personal Care,Haircut,48.46
+2026-04-08,Shopping,Home supplies,13.36
+2026-04-09,Transport,Gas station,54.18
+2026-04-10,Transport,Oil change,59.75
+2026-04-11,Personal Care,Dry cleaning,26.25
+2026-04-12,Household,Cleaning supplies,37.59
+2026-04-13,Food,Grocery store,89.81
+2026-04-14,Food,Coffee shop,9.60
+2026-04-15,Personal Care,Spa treatment,93.30
+2026-04-16,Transport,Tire rotation,38.41
+2026-04-17,Household,Hardware store,35.79
+2026-04-18,Transport,Parking fee,10.55
+2026-04-19,Childcare,Daycare,324.67
+2026-04-20,Transport,Train ticket,28.52
+2026-04-21,Pets,Vet visit,88.83
+2026-04-22,Food,Restaurant lunch,33.33
+2026-04-23,Healthcare,Dentist,121.16
+2026-04-24,Food,Farmers market,21.20
+2026-04-25,Healthcare,Doctor copay,40.00
+2026-04-26,Utilities,Mobile phone bill,67.42
+2026-04-27,Entertainment,Books,15.20
+2026-04-28,Shopping,Clothing store,86.58
+2026-04-29,Childcare,Babysitter,86.20
+2026-04-30,Fees,Bank service fee,12.00
+2026-04-01,Gifts,Birthday gift,27.65
+2026-04-02,Transport,Ride share,34.17
+2026-04-03,Utilities,Internet bill,59.99
+2026-04-04,Pets,Pet food,39.94
+2026-04-05,Housing,HOA fee,174.19
+2026-04-06,Utilities,Natural gas bill,48.75
+2026-04-07,Utilities,Trash and recycling,15.20
+2026-04-08,Travel,Hotel stay,173.93
+2026-04-09,Dining,Brunch,23.91
+2026-04-10,Food,Coffee shop,14.59
+2026-04-11,Shopping,Sporting goods,82.62
+2026-04-12,Shopping,Shoes,52.39
+2026-04-13,Transport,Car wash,16.61
+2026-04-14,Entertainment,Board games,21.51
+2026-04-15,Healthcare,Health insurance premium,185.00
+2026-04-16,Healthcare,Gym membership,35.00
+2026-04-17,Pets,Pet supplies,23.18
+2026-04-18,Healthcare,Therapy session,54.32
+2026-04-19,Transport,Car insurance payment,116.04
+2026-04-20,Fees,Credit card annual fee,95.00
+2026-04-21,Household,Kitchen supplies,23.41
+2026-04-22,Entertainment,Concert tickets,64.66
+2026-04-23,Entertainment,Netflix subscription,15.99
+2026-04-24,Subscriptions,Gym app premium,6.75
+2026-04-25,Shopping,Amazon purchase,45.87
+2026-04-26,Food,Fast food,21.99
+2026-04-27,Savings,Transfer to savings,426.00
+2026-04-28,Entertainment,Spotify subscription,10.99
+2026-04-29,Shopping,Furniture,172.05
+2026-04-30,Education,Online course,26.50
+2026-04-01,Healthcare,Specialist visit,106.74
+2026-04-02,Healthcare,Urgent care,130.57
+2026-04-03,Household,Plants and garden,33.45
+2026-04-04,Healthcare,Vision exam and glasses,169.20
+2026-04-05,Transport,Bus pass,45.00
+2026-04-06,Fees,ATM fee,3.00
+2026-04-07,Entertainment,Theme park,84.64
+2026-04-08,Gifts,Charitable donation,27.57
+2026-04-09,Subscriptions,Cloud storage,2.99
+2026-04-10,Travel,Travel meals,28.57
+2026-04-11,Food,Grocery store,50.39
+2026-04-12,Healthcare,Pharmacy,12.38
+2026-04-13,Entertainment,Bowling night,40.89
+2026-04-14,Utilities,Cable TV,44.91
+2026-04-15,Subscriptions,News subscription,12.00
+2026-04-16,Food,Grocery store,93.60
+2026-04-17,Utilities,Water bill,44.67
+2026-04-18,Entertainment,Movie tickets,34.31
+2026-05-01,Shopping,Home supplies,59.54
+2026-05-02,Household,Plants and garden,38.57
+2026-05-03,Transport,Ride share,18.05
+2026-05-04,Subscriptions,News subscription,12.00
+2026-05-05,Food,Restaurant dinner,37.81
+2026-05-06,Food,Grocery store,82.84
+2026-05-07,Food,Farmers market,36.97
+2026-05-08,Entertainment,Concert tickets,45.56
+2026-05-09,Healthcare,Therapy session,44.49
+2026-05-10,Transport,Auto repair,337.98
+2026-05-11,Shopping,Online order,58.29
+2026-05-12,Healthcare,Pharmacy,27.19
+2026-05-13,Healthcare,Health insurance premium,185.00
+2026-05-14,Healthcare,Specialist visit,63.38
+2026-05-15,Food,Meal kit subscription,65.18
+2026-05-16,Food,Grocery store,73.92
+2026-05-17,Food,Coffee shop,10.56
+2026-05-18,Entertainment,Museum visit,16.24
+2026-05-19,Education,Textbooks,71.46
+2026-05-20,Rent,Storage unit,68.02
+2026-05-21,Food,Takeout dinner,51.43
+2026-05-22,Pets,Pet supplies,31.00
+2026-05-23,Shopping,Shoes,116.48
+2026-05-24,Childcare,Babysitter,73.26
+2026-05-25,Personal Care,Dry cleaning,22.67
+2026-05-26,Travel,Rental car,65.36
+2026-05-27,Healthcare,Vision exam and glasses,146.86
+2026-05-28,Entertainment,Spotify subscription,10.99
+2026-05-29,Food,Fast food,15.55
+2026-05-30,Travel,Hotel stay,216.24
+2026-05-31,Healthcare,Pharmacy,46.17
+2026-05-01,Insurance,Renters insurance,22.00
+2026-05-02,Transport,Car insurance payment,109.85
+2026-05-03,Healthcare,Urgent care,195.65
+2026-05-04,Shopping,Furniture,113.57
+2026-05-05,Entertainment,Theme park,72.77
+2026-05-06,Utilities,Electric bill,72.51
+2026-05-07,Transport,Gas station,56.61
+2026-05-08,Entertainment,Sports event tickets,64.83
+2026-05-09,Entertainment,Books,32.12
+2026-05-10,Household,Cleaning supplies,30.54
+2026-05-11,Subscriptions,Cloud storage,2.99
+2026-05-12,Transport,Train ticket,18.83
+2026-05-13,Personal Care,Haircut,47.17
+2026-05-14,Entertainment,Bowling night,35.34
+2026-05-15,Healthcare,Dentist,87.13
+2026-05-16,Subscriptions,Gym app premium,6.34
+2026-05-17,Transport,Gas station,51.21
+2026-05-18,Transport,Ride share,37.31
+2026-05-19,Food,Coffee shop,11.56
+2026-05-20,Food,Restaurant lunch,37.42
+2026-05-21,Childcare,Daycare,329.56
+2026-05-22,Utilities,Mobile phone bill,76.18
+2026-05-23,Entertainment,Netflix subscription,15.99
+2026-05-24,Gifts,Wedding gift,85.57
+2026-05-25,Rent,Monthly apartment rent,1200.00
+2026-05-26,Transport,Metro card reload,39.31
+2026-05-27,Healthcare,Doctor copay,40.00
+2026-05-28,Entertainment,Movie tickets,32.64
+2026-05-29,Household,Kitchen supplies,40.69
+2026-05-30,Savings,Transfer to savings,314.95
+2026-05-31,Shopping,Clothing store,93.59
+2026-05-01,Shopping,Amazon purchase,14.15
+2026-05-02,Pets,Pet food,30.81
+2026-05-03,Shopping,Department store,41.58
+2026-05-04,Insurance,Life insurance,30.57
+2026-05-05,Utilities,Natural gas bill,29.08
+2026-05-06,Taxes,Property tax installment,533.54
+2026-05-07,Education,Online course,60.78
+2026-05-08,Fees,Bank service fee,12.00
+2026-05-09,Shopping,Electronics,159.19
+2026-05-10,Transport,Parking fee,24.52
+2026-05-11,Housing,HOA fee,153.18
+2026-05-12,Personal Care,Salon,50.13
+2026-05-13,Fees,Credit card annual fee,95.00
+2026-05-14,Entertainment,Video game purchase,46.61
+2026-05-15,Utilities,Trash and recycling,20.99
+2026-05-16,Dining,Date night dinner,73.61
+2026-06-01,Personal Care,Haircut,29.66
+2026-06-02,Transport,Gas station,66.64
+2026-06-03,Insurance,Renters insurance,22.00
+2026-06-04,Personal Care,Laundry service,17.20
+2026-06-05,Insurance,Life insurance,34.37
+2026-06-06,Utilities,Electric bill,57.44
+2026-06-07,Utilities,Natural gas bill,39.38
+2026-06-08,Transport,Ride share,10.87
+2026-06-09,Utilities,Cable TV,56.66
+2026-06-10,Travel,Hotel stay,175.95
+2026-06-11,Childcare,Babysitter,72.51
+2026-06-12,Transport,Auto repair,286.78
+2026-06-13,Utilities,Mobile phone bill,56.96
+2026-06-14,Food,Grocery store,88.61
+2026-06-15,Transport,Tire rotation,36.81
+2026-06-16,Food,Grocery store,90.77
+2026-06-17,Education,Workshop fee,97.47
+2026-06-18,Fees,Bank service fee,12.00
+2026-06-19,Shopping,Furniture,184.03
+2026-06-20,Pets,Vet visit,101.10
+2026-06-21,Entertainment,Video game purchase,36.98
+2026-06-22,Entertainment,Movie tickets,18.35
+2026-06-23,Entertainment,Theme park,149.00
+2026-06-24,Healthcare,Dentist,162.25
+2026-06-25,Shopping,Online order,31.42
+2026-06-26,Transport,Toll road,7.60
+2026-06-27,Transport,Gas station,70.21
+2026-06-28,Dining,Brunch,41.53
+2026-06-29,Personal Care,Salon,61.03
+2026-06-30,Taxes,Property tax installment,476.57
+2026-06-01,Healthcare,Therapy session,30.85
+2026-06-02,Subscriptions,Cloud storage,2.99
+2026-06-03,Personal Care,Spa treatment,92.65
+2026-06-04,Shopping,Department store,47.19
+2026-06-05,Household,Hardware store,29.80
+2026-06-06,Shopping,Shoes,58.87
+2026-06-07,Utilities,Trash and recycling,20.08
+2026-06-08,Rent,Monthly apartment rent,1200.00
+2026-06-09,Healthcare,Health insurance premium,185.00
+2026-06-10,Gifts,Birthday gift,53.96
+2026-06-11,Gifts,Charitable donation,61.09
+2026-06-12,Entertainment,Spotify subscription,10.99
+2026-06-13,Rent,Storage unit,88.75
+2026-06-14,Food,Lunch delivery,20.50
+2026-06-15,Fees,Late payment fee,33.74
+2026-06-16,Subscriptions,News subscription,12.00
+2026-06-17,Transport,Ride share,23.17
+2026-06-18,Education,Online course,51.33
+2026-06-19,Entertainment,Museum visit,25.45
+2026-06-20,Household,Kitchen supplies,21.40
+2026-06-21,Entertainment,Netflix subscription,15.99
+2026-06-22,Housing,HOA fee,199.86
+2026-06-23,Transport,Train ticket,26.11
+2026-06-24,Food,Coffee shop,11.38
+2026-06-25,Utilities,Water bill,38.78
+2026-06-26,Subscriptions,Gym app premium,6.52
+2026-06-27,Entertainment,Board games,34.30
+2026-06-28,Household,Plants and garden,49.29
+2026-06-29,Fees,Credit card annual fee,95.00
+2026-06-30,Travel,Flight,368.62
+2026-06-01,Fees,ATM fee,3.00
+2026-06-02,Healthcare,Pharmacy,14.17
+2026-06-03,Gifts,Wedding gift,131.59
+2026-06-04,Utilities,Internet bill,59.99
+2026-06-05,Entertainment,Concert tickets,113.98
+2026-06-06,Entertainment,Books,11.83
+2026-06-07,Food,Grocery store,103.33
+2026-06-08,Transport,Metro card reload,20.86
+2026-06-09,Transport,Bus pass,45.00
+2026-06-10,Pets,Pet food,44.11
+2026-06-11,Pets,Pet supplies,43.23
+2026-06-12,Shopping,Sporting goods,32.53
+2026-06-13,Dining,Date night dinner,75.07
+2026-06-14,Entertainment,Sports event tickets,83.23
+2026-06-15,Food,Bakery,11.06
+2026-06-16,Healthcare,Specialist visit,101.16
+2026-06-17,Transport,Oil change,46.85
+2026-06-18,Food,Farmers market,21.88

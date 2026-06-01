@@ -1,42 +1,89 @@
+import os
+import tkinter as tk
+from tkinter import filedialog
+
 from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage, SystemMessage
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_core.tools import tool
+from langchain_mistralai import ChatMistralAI
 from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.graph import MessagesState, START, StateGraph
+from langgraph.prebuilt import ToolNode, tools_condition
 
 from prompt import SYSTEM_PROMPT
 
 load_dotenv()
 
-model = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
+folder = os.path.dirname(__file__)
+default_csv = os.path.join(folder, "budget.csv")
+
+print("Welcome to your Budget Financial Planner!")
+print("I'll help you analyze spending from your budget CSV.")
+print()
+print("Please select your budget CSV file...")
+
+root = tk.Tk()
+root.withdraw()
+chosen = filedialog.askopenfilename(
+    title="Select budget CSV",
+    filetypes=[("CSV files", "*.csv"), ("All files", "*.*")],
+    initialdir=folder,
+    initialfile="budget.csv",
+)
+root.destroy()
+
+if chosen:
+    budget_file = chosen
+else:
+    print("No file selected. Using default:", default_csv)
+    budget_file = default_csv
+
+print("Using budget file:", budget_file)
+print()
+
+
+@tool
+def read_budget_csv():
+    """Read the budget CSV file with expenses."""
+    if not os.path.isfile(budget_file):
+        return "Error: file not found"
+    with open(budget_file) as f:
+        return f.read()
+
+
+tools = [read_budget_csv]
+model = ChatMistralAI(model="mistral-small")
+model = model.bind_tools(tools)
 
 
 def call_model(state):
-    response = model.invoke(
-        [SystemMessage(content=SYSTEM_PROMPT)] + state["messages"]
-    )
-    return {"messages": response}
+    messages = [SystemMessage(content=SYSTEM_PROMPT)] + state["messages"]
+    reply = model.invoke(messages)
+    return {"messages": reply}
 
 
 builder = StateGraph(MessagesState)
 builder.add_node("call_model", call_model)
+builder.add_node("tools", ToolNode(tools))
 builder.add_edge(START, "call_model")
+builder.add_conditional_edges("call_model", tools_condition)
+builder.add_edge("tools", "call_model")
 
 memory = InMemorySaver()
 graph = builder.compile(checkpointer=memory)
 
-config = {"configurable": {"thread_id": "1"}}
-
-print("LangGraph docs chatbot")
+print("Budget Financial Planner")
 print("Type quit to exit")
 print()
+
+config = {"configurable": {"thread_id": "1"}}
 
 while True:
     user_input = input("You: ").strip()
     if user_input.lower() in ("quit", "exit"):
         print("Bye!")
         break
-    if user_input == "":
+    if not user_input:
         continue
 
     result = graph.invoke(
@@ -45,12 +92,5 @@ while True:
     )
 
     answer = result["messages"][-1].content
-    if isinstance(answer, list):
-        answer = "".join(
-            part.get("text", "")
-            for part in answer
-            if isinstance(part, dict) and part.get("type") == "text"
-        )
-
     print("Bot:", answer)
     print()
