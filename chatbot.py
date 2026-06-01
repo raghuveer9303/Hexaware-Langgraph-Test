@@ -1,4 +1,6 @@
 import os
+import sqlite3
+import uuid
 import tkinter as tk
 from tkinter import filedialog
 
@@ -6,7 +8,7 @@ from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.tools import tool
 from langchain_mistralai import ChatMistralAI
-from langgraph.checkpoint.memory import InMemorySaver
+from langgraph.checkpoint.sqlite import SqliteSaver
 from langgraph.graph import MessagesState, START, StateGraph
 from langgraph.prebuilt import ToolNode, tools_condition
 
@@ -84,20 +86,64 @@ builder.add_edge(START, "call_model")
 builder.add_conditional_edges("call_model", tools_condition)
 builder.add_edge("tools", "call_model")
 
-memory = InMemorySaver()
+db_path = os.path.join(folder, "checkpoints.sqlite")
+conn = sqlite3.connect(db_path, check_same_thread=False)
+memory = SqliteSaver(conn)
+memory.setup()
+
 graph = builder.compile(checkpointer=memory)
 _graph_ref["graph"] = graph
+
+
+def choose_thread_id():
+    if env_id := os.environ.get("THREAD_ID"):
+        return env_id
+
+    print("Conversation thread")
+    print("  1) New conversation")
+    print("  2) Resume existing thread")
+    while True:
+        choice = input("Choose (1 or 2): ").strip()
+        if choice in ("1", "2"):
+            break
+        print("Please enter 1 or 2.")
+
+    if choice == "1":
+        thread_id = str(uuid.uuid4())
+        print()
+        print(f"Your thread ID (save this to resume later): {thread_id}")
+        print()
+        return thread_id
+
+    while True:
+        thread_id = input("Enter your thread ID: ").strip()
+        if thread_id:
+            break
+        print("Thread ID cannot be empty.")
+
+    snapshot = graph.get_state({"configurable": {"thread_id": thread_id}})
+    n = len(snapshot.values.get("messages", [])) if snapshot else 0
+    print()
+    if n:
+        print(f"Resuming thread {thread_id} ({n} messages in history)")
+    else:
+        print(f"No prior messages for thread {thread_id}. Starting fresh.")
+    print()
+    return thread_id
+
+
+thread_id = choose_thread_id()
+config = {"configurable": {"thread_id": thread_id}}
 
 print("Budget Financial Planner")
 print("Type quit to exit")
 print()
 
-config = {"configurable": {"thread_id": "1"}}
-
 while True:
     user_input = input("You: ").strip()
     if user_input.lower() in ("quit", "exit"):
         print("Bye!")
+        print(f"Thread ID: {thread_id}")
         break
     if not user_input:
         continue
