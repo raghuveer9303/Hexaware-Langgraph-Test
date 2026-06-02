@@ -78,6 +78,75 @@ def call_model(state):
     return {"messages": reply}
 
 
+def _normalize_content(content):
+    if isinstance(content, str):
+        return content
+    if isinstance(content, list):
+        parts = []
+        for chunk in content:
+            if isinstance(chunk, str):
+                parts.append(chunk)
+            elif isinstance(chunk, dict):
+                text = chunk.get("text")
+                if isinstance(text, str):
+                    parts.append(text)
+        return "".join(parts)
+    return ""
+
+
+def stream_chat(user_input, config):
+    printed_bot_prefix = False
+    in_assistant_line = False
+    tool_started = set()
+
+    for mode, chunk in graph.stream(
+        {"messages": [HumanMessage(content=user_input)]},
+        config,
+        stream_mode=["messages", "updates"],
+    ):
+        if mode == "messages":
+            message, metadata = chunk
+            if metadata.get("langgraph_node") != "call_model":
+                continue
+
+            if message.tool_call_chunks:
+                for tool_call in message.tool_call_chunks:
+                    tool_name = tool_call.get("name") or "unknown_tool"
+                    tool_id = tool_call.get("id") or tool_name
+                    if tool_id not in tool_started:
+                        if in_assistant_line:
+                            print()
+                            in_assistant_line = False
+                        print(f"[Tool call] {tool_name}")
+                        tool_started.add(tool_id)
+
+            text = _normalize_content(message.content)
+            if text:
+                if not printed_bot_prefix:
+                    print("Bot: ", end="", flush=True)
+                    printed_bot_prefix = True
+                print(text, end="", flush=True)
+                in_assistant_line = True
+
+        elif mode == "updates":
+            tools_update = chunk.get("tools")
+            if tools_update and in_assistant_line:
+                print()
+                in_assistant_line = False
+
+            if tools_update:
+                for item in tools_update.get("messages", []):
+                    name = getattr(item, "name", None)
+                    if name:
+                        print(f"[Tool result] {name}")
+
+    if in_assistant_line:
+        print()
+    if not printed_bot_prefix:
+        print("Bot: ")
+    print()
+
+
 builder = StateGraph(MessagesState)
 builder.add_node("call_model", call_model)
 builder.add_node("tools", ToolNode(tools))
@@ -148,11 +217,4 @@ while True:
     if not user_input:
         continue
 
-    result = graph.invoke(
-        {"messages": [HumanMessage(content=user_input)]},
-        config,
-    )
-
-    answer = result["messages"][-1].content
-    print("Bot:", answer)
-    print()
+    stream_chat(user_input, config)
